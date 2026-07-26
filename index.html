@@ -8,27 +8,67 @@
 *{box-sizing:border-box;margin:0;padding:0;font-family:monospace}
 body{background:#111;color:#ccc;padding:14px;display:flex;flex-direction:column;gap:12px;min-height:100vh}
 h2{font-size:14px;letter-spacing:3px;color:#ffb300;text-align:center;padding:4px 0}
-.sub{font-size:10px;letter-spacing:2px;color:#555;text-align:center}
+
+/* QTH */
+.qth-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #2a2a2a;border-radius:8px;background:#1a1a1a}
+.qth-label{font-size:10px;letter-spacing:2px;color:#555;white-space:nowrap}
+.qth-val{font-size:12px;color:#ffb300;flex:1}
+.qth-btn{padding:4px 10px;border:1px solid #444;border-radius:6px;font-size:11px;color:#888;background:transparent;cursor:pointer;font-family:monospace}
+.qth-btn:hover{border-color:#ffb300;color:#ffb300}
+
+/* Modal QTH */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:100;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:#1a1a1a;border:1px solid #333;border-radius:12px;padding:20px;width:100%;max-width:400px;display:flex;flex-direction:column;gap:12px}
+.modal-title{font-size:13px;letter-spacing:2px;color:#ffb300}
+.modal-row{display:flex;gap:8px}
+.modal-input{flex:1;padding:10px 12px;background:#111;border:1px solid #333;border-radius:8px;color:#ddd;font-size:13px;font-family:monospace;outline:none}
+.modal-input:focus{border-color:#ffb300}
+.modal-btns{display:flex;gap:8px}
+.mbtn{flex:1;padding:10px;border-radius:8px;font-size:12px;cursor:pointer;font-family:monospace;letter-spacing:1px}
+.mbtn-ok{background:transparent;border:1px solid #ffb300;color:#ffb300}
+.mbtn-ok:hover{background:rgba(255,179,0,0.08)}
+.mbtn-cancel{background:transparent;border:1px solid #444;color:#666}
+.mbtn-search{padding:10px 14px;border:1px solid #555;border-radius:8px;font-size:12px;cursor:pointer;font-family:monospace;color:#aaa;background:transparent;white-space:nowrap}
+.mbtn-search:hover{border-color:#ffb300;color:#ffb300}
+.qth-hint{font-size:10px;color:#444}
+
+/* Búsqueda */
 .search-wrap{display:flex;gap:8px}
 #query{flex:1;padding:12px 14px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#ddd;font-size:15px;font-family:monospace;outline:none}
 #query:focus{border-color:#ffb300}
 #query::placeholder{color:#444}
 .go-btn{padding:12px 18px;background:transparent;border:1px solid #ffb300;border-radius:8px;color:#ffb300;font-size:13px;cursor:pointer;white-space:nowrap;font-family:monospace}
 .go-btn:hover{background:rgba(255,179,0,0.08)}
-.hints{font-size:11px;color:#444;padding:2px 0}
+.hints{font-size:11px;color:#444}
 .hints b{color:#666}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip{padding:5px 10px;border:1px solid #2a2a2a;border-radius:20px;font-size:11px;color:#666;cursor:pointer;background:#1a1a1a}
 .chip:hover{border-color:#555;color:#aaa}
+
+/* Múltiples resultados */
+.multi-title{font-size:11px;letter-spacing:2px;color:#666;padding:2px 0}
+.multi-list{display:flex;flex-direction:column;gap:6px}
+.multi-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid #2a2a2a;border-radius:8px;background:#1a1a1a;cursor:pointer}
+.multi-item:hover{border-color:#ffb300;background:rgba(255,179,0,0.04)}
+.multi-name{font-size:13px;color:#ccc;flex:1}
+.multi-type{font-size:10px;color:#555}
+.multi-az{font-size:16px;color:#ffb300;font-weight:bold;min-width:45px;text-align:right}
+
+/* Badges */
 .type-badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;letter-spacing:1px}
 .type-grid{background:rgba(0,180,80,0.15);color:#4c8;border:1px solid rgba(0,180,80,0.3)}
 .type-city{background:rgba(180,80,180,0.15);color:#c8c;border:1px solid rgba(180,80,180,0.3)}
 .type-coords{background:rgba(255,140,0,0.15);color:#fa6;border:1px solid rgba(255,140,0,0.3)}
+
+/* Loading */
 .loading{text-align:center;color:#555;font-size:13px;padding:20px}
 .dot{animation:blink 1.2s infinite}
 .dot:nth-child(2){animation-delay:.2s}
 .dot:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
+
+/* Resultado */
 .result-card{border:1px solid #2a2a2a;border-radius:10px;background:#1a1a1a;overflow:hidden}
 .result-header{padding:12px 16px;background:#1e1e1e;border-bottom:1px solid #2a2a2a;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .result-name{font-size:15px;font-weight:bold;color:#ddd}
@@ -45,6 +85,8 @@ h2{font-size:14px;letter-spacing:3px;color:#ffb300;text-align:center;padding:4px
 .rotor-btn{width:100%;padding:14px;background:transparent;border:1px solid #ffb300;border-radius:8px;color:#ffb300;font-size:13px;letter-spacing:2px;cursor:pointer;font-family:monospace;margin-top:4px}
 .rotor-btn:hover{background:rgba(255,179,0,0.08)}
 .rotor-btn.sent{border-color:#00cc44;color:#00cc44}
+
+/* Historial */
 .hist-title{font-size:10px;letter-spacing:2px;color:#444}
 .hist-list{display:flex;flex-direction:column;gap:4px}
 .hist-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid #222;border-radius:6px;background:#181818;cursor:pointer}
@@ -57,9 +99,36 @@ h2{font-size:14px;letter-spacing:3px;color:#ffb300;text-align:center;padding:4px
 </head>
 <body>
 
+<!-- QTH Bar -->
 <h2>ROTOR — BUSCADOR DE AZIMUT</h2>
-<p class="sub">DESDE TU QTH · BUENOS AIRES · -34.64, -58.47</p>
+<div class="qth-bar">
+  <span class="qth-label">QTH</span>
+  <span class="qth-val" id="qthDisplay">cargando...</span>
+  <button class="qth-btn" onclick="openQTH()">✏ Cambiar</button>
+</div>
 
+<!-- Modal QTH -->
+<div class="modal" id="qthModal">
+  <div class="modal-box">
+    <div class="modal-title">CONFIGURAR QTH</div>
+    <p class="qth-hint">Ingresá tu ciudad o coordenadas exactas</p>
+    <div class="modal-row">
+      <input class="modal-input" id="qthSearch" placeholder="Ej: Buenos Aires, Córdoba Argentina...">
+      <button class="mbtn-search" onclick="searchQTH()">Buscar</button>
+    </div>
+    <div id="qthResults" style="display:none;flex-direction:column;gap:6px"></div>
+    <div class="modal-row">
+      <input class="modal-input" id="qthLat" placeholder="Latitud" type="number" step="0.0001">
+      <input class="modal-input" id="qthLon" placeholder="Longitud" type="number" step="0.0001">
+    </div>
+    <div class="mbtn-btns" style="display:flex;gap:8px">
+      <button class="mbtn mbtn-cancel" onclick="closeQTH()">Cancelar</button>
+      <button class="mbtn mbtn-ok" onclick="saveQTH()">Guardar QTH</button>
+    </div>
+  </div>
+</div>
+
+<!-- Búsqueda -->
 <div class="search-wrap">
   <input id="query" placeholder="Grid, Ciudad, País o Coordenadas..."
     onkeydown="if(event.key==='Enter')buscar()">
@@ -68,7 +137,7 @@ h2{font-size:14px;letter-spacing:3px;color:#ffb300;text-align:center;padding:4px
 
 <p class="hints">
   <b>Grid:</b> GF05rk &nbsp;·&nbsp;
-  <b>Ciudad:</b> Tokyo &nbsp;·&nbsp;
+  <b>Ciudad:</b> Cordoba &nbsp;·&nbsp;
   <b>País:</b> Japon &nbsp;·&nbsp;
   <b>Coords:</b> 35.68, 139.69
 </p>
@@ -76,12 +145,10 @@ h2{font-size:14px;letter-spacing:3px;color:#ffb300;text-align:center;padding:4px
 <div class="chips">
   <span class="chip" onclick="setQ('GF05rk')">🔲 GF05rk</span>
   <span class="chip" onclick="setQ('IO91wm')">🔲 IO91wm</span>
-  <span class="chip" onclick="setQ('PM95')">🔲 PM95</span>
+  <span class="chip" onclick="setQ('Cordoba')">🏙 Córdoba</span>
   <span class="chip" onclick="setQ('Tokyo')">🏙 Tokio</span>
   <span class="chip" onclick="setQ('Madrid')">🏙 Madrid</span>
-  <span class="chip" onclick="setQ('Moscu')">🏙 Moscú</span>
   <span class="chip" onclick="setQ('Japon')">🌏 Japón</span>
-  <span class="chip" onclick="setQ('Australia')">🌏 Australia</span>
   <span class="chip" onclick="setQ('35.68, 139.69')">📍 Coords</span>
 </div>
 
@@ -93,10 +160,70 @@ h2{font-size:14px;letter-spacing:3px;color:#ffb300;text-align:center;padding:4px
 </div>
 
 <script>
-const QTH_LAT=-34.64, QTH_LON=-58.47;
-let history=[];
+// ── QTH ──────────────────────────────────────────
+let QTH_LAT = -34.64;
+let QTH_LON  = -58.47;
+let QTH_NAME = 'Buenos Aires';
 
-function setQ(v){document.getElementById('query').value=v;}
+function loadQTH(){
+  const saved = localStorage.getItem('rotor_qth');
+  if(saved){
+    const q = JSON.parse(saved);
+    QTH_LAT = q.lat; QTH_LON = q.lon; QTH_NAME = q.name;
+  }
+  updateQTHDisplay();
+}
+
+function updateQTHDisplay(){
+  document.getElementById('qthDisplay').textContent =
+    `${QTH_NAME} · ${QTH_LAT.toFixed(4)}, ${QTH_LON.toFixed(4)}`;
+}
+
+function saveQTH(){
+  const lat = parseFloat(document.getElementById('qthLat').value);
+  const lon = parseFloat(document.getElementById('qthLon').value);
+  if(isNaN(lat)||isNaN(lon)){alert('Completá latitud y longitud');return;}
+  QTH_LAT = lat; QTH_LON = lon;
+  QTH_NAME = document.getElementById('qthSearch').value || `${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+  localStorage.setItem('rotor_qth', JSON.stringify({lat:QTH_LAT,lon:QTH_LON,name:QTH_NAME}));
+  updateQTHDisplay();
+  closeQTH();
+}
+
+function openQTH(){
+  document.getElementById('qthSearch').value = QTH_NAME;
+  document.getElementById('qthLat').value = QTH_LAT;
+  document.getElementById('qthLon').value = QTH_LON;
+  document.getElementById('qthResults').style.display = 'none';
+  document.getElementById('qthModal').classList.add('open');
+}
+function closeQTH(){ document.getElementById('qthModal').classList.remove('open'); }
+
+async function searchQTH(){
+  const q = document.getElementById('qthSearch').value.trim();
+  if(!q) return;
+  const res = await fetch(`/api/city?q=${encodeURIComponent(q)}&multi=1`);
+  const data = await res.json();
+  const results = data.results || (data.error ? [] : [data]);
+  const cont = document.getElementById('qthResults');
+  if(!results.length){ cont.style.display='none'; return; }
+  cont.style.display = 'flex';
+  cont.innerHTML = results.map((r,i)=>`
+    <div class="multi-item" onclick="selectQTH(${r.lat},${r.lon},'${r.name.replace(/'/g,"\\'")}')">
+      <span class="multi-name">${r.name}</span>
+    </div>`).join('');
+}
+
+function selectQTH(lat,lon,name){
+  document.getElementById('qthLat').value = lat;
+  document.getElementById('qthLon').value = lon;
+  document.getElementById('qthSearch').value = name;
+  document.getElementById('qthResults').style.display = 'none';
+}
+
+// ── Utilidades ────────────────────────────────────
+let history = [];
+function setQ(v){ document.getElementById('query').value = v; }
 
 function azimuth(lat1,lon1,lat2,lon2){
   const R=Math.PI/180,f1=lat1*R,f2=lat2*R,dl=(lon2-lon1)*R;
@@ -109,21 +236,21 @@ function distance(lat1,lon1,lat2,lon2){
   const a=Math.sin(dL/2)**2+Math.cos(lat1*r)*Math.cos(lat2*r)*Math.sin(dO/2)**2;
   return Math.round(R*2*Math.asin(Math.sqrt(a)));
 }
-function dirStr(a){return['N','NE','E','SE','S','SO','O','NO'][Math.round(a/45)%8];}
-function compassEmoji(a){return['⬆️','↗️','➡️','↘️','⬇️','↙️','⬅️','↖️'][Math.round(a/45)%8];}
+function dirStr(a){ return['N','NE','E','SE','S','SO','O','NO'][Math.round(a/45)%8]; }
+function compassEmoji(a){ return['⬆️','↗️','➡️','↘️','⬇️','↙️','⬅️','↖️'][Math.round(a/45)%8]; }
 
 function detectType(q){
-  q=q.trim();
+  q = q.trim();
   if(/^(-?\d{1,3}(?:\.\d+)?)\s*[,\s]\s*(-?\d{1,3}(?:\.\d+)?)$/.test(q)) return 'coords';
   if(/^[A-Ra-r]{2}\d{2}(?:[A-Xa-x]{2})?$/.test(q)) return 'grid';
   return 'city';
 }
 
 function gridToLatLon(grid){
-  grid=grid.toUpperCase();
+  grid = grid.toUpperCase();
   const lon=(grid.charCodeAt(0)-65)*20-180+(grid.charCodeAt(2)-48)*2;
   const lat=(grid.charCodeAt(1)-65)*10-90+(grid.charCodeAt(3)-48);
-  let lonF=lon+1,latF=lat+0.5;
+  let lonF=lon+1, latF=lat+0.5;
   if(grid.length>=6){
     lonF=lon+(grid.charCodeAt(4)-65)*2/24+1/24;
     latF=lat+(grid.charCodeAt(5)-65)/24+1/48;
@@ -131,22 +258,50 @@ function gridToLatLon(grid){
   return{lat:latF,lon:lonF};
 }
 
+// ── UI helpers ────────────────────────────────────
 function showLoading(type,q){
-  const msgs={grid:`Convirtiendo grid <b>${q.toUpperCase()}</b>...`,city:`Buscando <b>${q}</b>...`,coords:`Calculando azimut...`};
-  document.getElementById('output').innerHTML=`<div class="loading">${msgs[type]} <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>`;
+  const msgs={grid:`Convirtiendo grid <b>${q.toUpperCase()}</b>...`,city:`Buscando <b>${q}</b>...`,coords:`Calculando...`};
+  document.getElementById('output').innerHTML =
+    `<div class="loading">${msgs[type]} <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>`;
 }
-
 function showError(msg){
-  document.getElementById('output').innerHTML=`<div class="error-box">⚠ ${msg}</div>`;
+  document.getElementById('output').innerHTML = `<div class="error-box">⚠ ${msg}</div>`;
 }
 
-function showResult(data){
-  const a=Math.round(azimuth(QTH_LAT,QTH_LON,data.lat,data.lon));
-  const d=distance(QTH_LAT,QTH_LON,data.lat,data.lon);
-  const typeLabels={grid:'GRID MAIDENHEAD',city:'CIUDAD / PAÍS',coords:'COORDENADAS'};
-  const typeClass={grid:'type-grid',city:'type-city',coords:'type-coords'};
+// ── Mostrar múltiples resultados ──────────────────
+function showMulti(results, query){
+  const items = results.map((r,i)=>{
+    const a = Math.round(azimuth(QTH_LAT,QTH_LON,r.lat,r.lon));
+    const d = distance(QTH_LAT,QTH_LON,r.lat,r.lon);
+    return{...r, az:a, dist:d};
+  });
 
-  document.getElementById('output').innerHTML=`
+  document.getElementById('output').innerHTML = `
+<div class="multi-title">MÚLTIPLES RESULTADOS PARA "${query.toUpperCase()}" — Elegí uno:</div>
+<div class="multi-list">
+  ${items.map((r,i)=>`
+  <div class="multi-item" onclick='selectResult(${JSON.stringify(r)})'>
+    <div style="display:flex;flex-direction:column;gap:2px;flex:1">
+      <span class="multi-name">${r.name}</span>
+      <span class="multi-type">${r.dist.toLocaleString()} km · ${dirStr(r.az)}</span>
+    </div>
+    <span class="multi-az">${r.az}°</span>
+  </div>`).join('')}
+</div>`;
+}
+
+function selectResult(r){
+  showResult({...r, type:'city', query:r.name});
+}
+
+// ── Resultado final ───────────────────────────────
+function showResult(data){
+  const a = Math.round(azimuth(QTH_LAT,QTH_LON,data.lat,data.lon));
+  const d = distance(QTH_LAT,QTH_LON,data.lat,data.lon);
+  const typeLabels = {grid:'GRID MAIDENHEAD',city:'CIUDAD / PAÍS',coords:'COORDENADAS'};
+  const typeClass  = {grid:'type-grid',city:'type-city',coords:'type-coords'};
+
+  document.getElementById('output').innerHTML = `
 <div class="result-card">
   <div class="result-header">
     <span class="result-name">${data.name||data.query}</span>
@@ -178,53 +333,64 @@ function showResult(data){
   renderHistory();
 }
 
+// ── Búsqueda principal ────────────────────────────
 async function buscar(){
-  const q=document.getElementById('query').value.trim();
+  const q = document.getElementById('query').value.trim();
   if(!q) return;
-  const type=detectType(q);
-  showLoading(type,q);
+  const type = detectType(q);
+  showLoading(type, q);
 
   try{
-    let data={type,query:q};
+    let data = {type, query:q};
 
     if(type==='coords'){
-      const m=q.match(/(-?\d+(?:\.\d+)?)\s*[,\s]\s*(-?\d+(?:\.\d+)?)/);
-      data.lat=parseFloat(m[1]); data.lon=parseFloat(m[2]);
-      data.name=`${data.lat.toFixed(4)}, ${data.lon.toFixed(4)}`;
+      const m = q.match(/(-?\d+(?:\.\d+)?)\s*[,\s]\s*(-?\d+(?:\.\d+)?)/);
+      data.lat = parseFloat(m[1]); data.lon = parseFloat(m[2]);
+      data.name = `${data.lat.toFixed(4)}, ${data.lon.toFixed(4)}`;
+      showResult(data);
 
     }else if(type==='grid'){
-      const pos=gridToLatLon(q);
-      data.lat=pos.lat; data.lon=pos.lon;
-      data.name=q.toUpperCase();
+      const pos = gridToLatLon(q);
+      data.lat = pos.lat; data.lon = pos.lon;
+      data.name = q.toUpperCase();
+      showResult(data);
 
     }else{
-      const res=await fetch(`/api/city?q=${encodeURIComponent(q)}`);
-      const info=await res.json();
+      // Pedir múltiples resultados
+      const res = await fetch(`/api/city?q=${encodeURIComponent(q)}&multi=1`);
+      const info = await res.json();
       if(info.error) throw new Error(info.error);
-      data.lat=info.lat; data.lon=info.lon; data.name=info.name;
-    }
 
-    showResult(data);
+      if(info.results && info.results.length > 1){
+        showMulti(info.results, q);
+      }else{
+        const r = info.results ? info.results[0] : info;
+        data.lat = r.lat; data.lon = r.lon; data.name = r.name;
+        showResult(data);
+      }
+    }
   }catch(e){
     showError(`No se pudo resolver "${q}" — ${e.message}`);
   }
 }
 
+// ── Apuntar rotor ─────────────────────────────────
 function apuntar(deg){
-  const btn=document.getElementById('rotorBtn');
-  btn.textContent='⟳ Enviando...';
+  const btn = document.getElementById('rotorBtn');
+  btn.textContent = '⟳ Enviando...';
   fetch(`http://192.168.0.63/cmd?action=goto&deg=${deg}`)
-    .then(()=>{btn.textContent=`✓ ROTOR APUNTANDO A ${deg}°`;btn.classList.add('sent');})
-    .catch(()=>{btn.textContent=`✓ ENVIADO A ${deg}°`;btn.classList.add('sent');});
+    .then(()=>{ btn.textContent=`✓ ROTOR APUNTANDO A ${deg}°`; btn.classList.add('sent'); })
+    .catch(()=>{ btn.textContent=`✓ ENVIADO A ${deg}°`; btn.classList.add('sent'); });
 }
 
+// ── Historial ─────────────────────────────────────
 function renderHistory(){
-  const wrap=document.getElementById('histWrap');
-  const list=document.getElementById('histList');
-  if(!history.length){wrap.style.display='none';return;}
-  wrap.style.display='flex';
-  const typeLabels={grid:'GRID',city:'CIUDAD',coords:'COORDS'};
-  list.innerHTML=history.map((h,i)=>`
+  const wrap = document.getElementById('histWrap');
+  const list = document.getElementById('histList');
+  if(!history.length){ wrap.style.display='none'; return; }
+  wrap.style.display = 'flex';
+  const typeLabels = {grid:'GRID',city:'CIUDAD',coords:'COORDS'};
+  list.innerHTML = history.map((h,i)=>`
     <div class="hist-item" onclick="restoreHist(${i})">
       <span class="hist-query">${h.query}</span>
       <span class="hist-type">${typeLabels[h.type]||h.type}</span>
@@ -233,9 +399,12 @@ function renderHistory(){
 }
 
 function restoreHist(i){
-  const h=history[i];
-  document.getElementById('query').value=h.query;
-  showResult({...h,name:h.name||h.query});
+  const h = history[i];
+  document.getElementById('query').value = h.query;
+  showResult({...h, name:h.name||h.query});
 }
+
+// ── Init ──────────────────────────────────────────
+loadQTH();
 </script>
 </body></html>
